@@ -19,6 +19,7 @@ Project {
     minimumQbsVersion: "1.9.0"
 
     references: [
+        "src/deployment.qbs",
         "src/udev/udev.qbs",
         //"tests/auto/auto.qbs",
     ]
