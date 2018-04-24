@@ -4,8 +4,8 @@ import LiriUtils
 LiriModuleProject {
     id: root
 
-    name: "LiriUDev"
-    moduleName: "LiriUDev"
+    name: "Qt5UDev"
+    moduleName: "Qt5UDev"
     description: "Qt API for udev"
     pkgConfigDependencies: ["Qt5Core", "libudev"]
     createCMake: false
@@ -54,8 +54,8 @@ LiriModuleProject {
         }
 
         cpp.defines: base.concat([
-            'LIRIWAYLAND_VERSION="' + project.version + '"',
-            "QT_BUILD_LIRIUDEV_LIB"
+            'QTUDEV_VERSION="' + project.version + '"',
+            "LIRI_BUILD_QTUDEV_LIB"
         ])
 
         files: ["*.cpp", "*.h"]

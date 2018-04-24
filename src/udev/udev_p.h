@@ -37,7 +37,7 @@
 
 #include <QLoggingCategory>
 
-#include <LiriUDev/liriudevglobal.h>
+#include <QtUDev/qtudevglobal.h>
 
 extern "C" {
 #include <libudev.h>

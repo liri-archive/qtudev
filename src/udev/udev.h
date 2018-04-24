@@ -26,7 +26,7 @@
 
 #include <QtCore/QString>
 
-#include <LiriUDev/liriudevglobal.h>
+#include <QtUDev/qtudevglobal.h>
 
 namespace Liri {
 
