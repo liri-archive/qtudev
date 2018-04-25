@@ -75,7 +75,7 @@ to learn how to enable them.
 
 ### Available categories
 
-* **qtudev:* udev integration
+* **qtudev:** udev integration
 
 ## Licensing
 
