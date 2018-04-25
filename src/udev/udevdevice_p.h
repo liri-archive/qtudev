@@ -21,14 +21,14 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef UDEVDEVICE_P_H
-#define UDEVDEVICE_P_H
+#ifndef QTUDEVDEVICE_P_H
+#define QTUDEVDEVICE_P_H
 
 //
 //  W A R N I N G
 //  -------------
 //
-// This file is not part of the Liri.  It exists purely as an
+// This file is not part of the QtUdev.  It exists purely as an
 // implementation detail.  This header file may change from version to
 // version without notice, or even be removed.
 //
@@ -39,9 +39,7 @@ extern "C" {
 #include <libudev.h>
 }
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class UdevDevicePrivate
 {
@@ -52,8 +50,6 @@ public:
     udev_device *device;
 };
 
-} // namespace Platform
+} // namespace QtUdev
 
-} // namespace Liri
-
-#endif // UDEVDEVICE_P_H
+#endif // QTUDEVDEVICE_P_H

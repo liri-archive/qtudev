@@ -27,9 +27,7 @@
 #include "udevdevice.h"
 #include "udevdevice_p.h"
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 static inline QStringList listFromEntries(udev_list_entry *l)
 {
@@ -208,6 +206,4 @@ QDebug operator<<(QDebug dbg, const UdevDevice &device)
     return dbg;
 }
 
-} // namespace Platform
-
-} // namespace Liri
+} // namespace QtUdev

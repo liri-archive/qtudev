@@ -27,11 +27,9 @@
 #include "udev_p.h"
 #include "udevdevice.h"
 
-Q_LOGGING_CATEGORY(lcUdev, "liri.udev")
+Q_LOGGING_CATEGORY(lcUdev, "qtudev")
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 /*
  * UdevPrivate
@@ -124,6 +122,4 @@ UdevDevice *Udev::deviceFromSysfsPath(const QString &sysfsPath) const
     return new UdevDevice(dev);
 }
 
-} // namespace Platform
-
-} // namespace Liri
+} // namespace QtUdev

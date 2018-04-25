@@ -21,7 +21,8 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#pragma once
+#ifndef QTUDEVGLOBAL_H
+#define QTUDEVGLOBAL_H
 
 #include <QtCore/qglobal.h>
 
@@ -31,3 +32,5 @@
 #  define QTUDEV_EXPORT Q_DECL_IMPORT
 #endif
 #define QTUDEV_NO_EXPORT Q_DECL_HIDDEN
+
+#endif // QTUDEVGLOBAL_H

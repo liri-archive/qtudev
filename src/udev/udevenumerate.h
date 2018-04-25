@@ -21,18 +21,16 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef LIRI_UDEVENUMERATE_H
-#define LIRI_UDEVENUMERATE_H
+#ifndef QTUDEVENUMERATE_H
+#define QTUDEVENUMERATE_H
 
-#include <LiriUDev/UdevDevice>
+#include <Qt5Udev/UdevDevice>
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class UdevEnumeratePrivate;
 
-class LIRIUDEV_EXPORT UdevEnumerate
+class QTUDEV_EXPORT UdevEnumerate
 {
     Q_DECLARE_PRIVATE(UdevEnumerate)
 public:
@@ -45,8 +43,6 @@ private:
     UdevEnumeratePrivate *const d_ptr;
 };
 
-} // namespace Platform
+} // namespace QtUdev
 
-} // namespace Liri
-
-#endif // UDEVENUMERATE_H
+#endif // QTUDEVENUMERATE_H

@@ -4,8 +4,8 @@ import LiriUtils
 LiriModuleProject {
     id: root
 
-    name: "Qt5UDev"
-    moduleName: "Qt5UDev"
+    name: "Qt5Udev"
+    moduleName: "Qt5Udev"
     description: "Qt API for udev"
     pkgConfigDependencies: ["Qt5Core", "libudev"]
     createCMake: false

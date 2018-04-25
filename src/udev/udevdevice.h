@@ -21,25 +21,23 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef LIRI_UDEVDEVICE_H
-#define LIRI_UDEVDEVICE_H
+#ifndef QTUDEVDEVICE_H
+#define QTUDEVDEVICE_H
 
 #include <QtCore/QObject>
 
-#include <QtUDev/qtudevglobal.h>
+#include <Qt5Udev/qtudevglobal.h>
 
 struct udev_device;
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class Udev;
 class UdevEnumerate;
 class UdevDevicePrivate;
 class UdevMonitorPrivate;
 
-class LIRIUDEV_EXPORT UdevDevice
+class QTUDEV_EXPORT UdevDevice
 {
     Q_DECLARE_PRIVATE(UdevDevice)
 public:
@@ -95,8 +93,6 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(UdevDevice::DeviceTypes)
 
 QDebug operator<<(QDebug, const UdevDevice &);
 
-} // namespace Platform
+} // namespace QtUdev
 
-} // namespace Liri
-
-#endif // LIRI_UDEVDEVICE_H
+#endif // QTUDEVDEVICE_H

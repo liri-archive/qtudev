@@ -11,9 +11,9 @@ Project {
         archiver.type: "tar"
         archiver.outputDirectory: project.buildDirectory
 
-        Depends { name: "Qt5UDev" }
-        Depends { name: "Qt5UDev-pkgconfig" }
-        Depends { name: "Qt5UDev-qbs" }
+        Depends { name: "Qt5Udev" }
+        Depends { name: "Qt5Udev-pkgconfig" }
+        Depends { name: "Qt5Udev-qbs" }
         Depends { productTypes: ["installable"] }
     }
 }

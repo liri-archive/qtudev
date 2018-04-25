@@ -26,9 +26,7 @@
 #include "udevenumerate.h"
 #include "udevenumerate_p.h"
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 /*
  * UdevEnumeratePrivate
@@ -160,6 +158,4 @@ QList<UdevDevice *> UdevEnumerate::scan() const
     return list;
 }
 
-} // namespace Platform
-
-} // namespace Liri
+} // namespace QtUdev

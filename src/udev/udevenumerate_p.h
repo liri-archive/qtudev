@@ -21,14 +21,14 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef UDEVENUMERATE_P_H
-#define UDEVENUMERATE_P_H
+#ifndef QTUDEVENUMERATE_P_H
+#define QTUDEVENUMERATE_P_H
 
 //
 //  W A R N I N G
 //  -------------
 //
-// This file is not part of the Liri.  It exists purely as an
+// This file is not part of the QtUdev.  It exists purely as an
 // implementation detail.  This header file may change from version to
 // version without notice, or even be removed.
 //
@@ -41,9 +41,7 @@ extern "C" {
 #include <libudev.h>
 }
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class UdevEnumeratePrivate
 {
@@ -56,8 +54,6 @@ public:
     udev_enumerate *enumerate;
 };
 
-} // namespace Platform
-
-} // namespace Liri
+} // namespace QtUdev
 
 #endif // UDEVENUMERATE_P_H

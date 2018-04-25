@@ -21,22 +21,20 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef LIRI_UDEVMONITOR_H
-#define LIRI_UDEVMONITOR_H
+#ifndef QTUDEVMONITOR_H
+#define QTUDEVMONITOR_H
 
 #include <QtCore/QObject>
 
-#include <QtUDev/qtudevglobal.h>
+#include <Qt5Udev/qtudevglobal.h>
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class Udev;
 class UdevDevice;
 class UdevMonitorPrivate;
 
-class LIRIUDEV_EXPORT UdevMonitor : public QObject
+class QTUDEV_EXPORT UdevMonitor : public QObject
 {
     Q_OBJECT
     Q_DECLARE_PRIVATE(UdevMonitor)
@@ -62,8 +60,6 @@ private:
     Q_PRIVATE_SLOT(d_func(), void _q_udevEventHandler())
 };
 
-} // namespace Platform
+} // namespace QtUdev
 
-} // namespace Liri
-
-#endif // LIRI_UDEVMONITOR_H
+#endif // QTUDEVMONITOR_H

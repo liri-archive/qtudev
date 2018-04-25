@@ -21,21 +21,19 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef LIRI_UDEV_H
-#define LIRI_UDEV_H
+#ifndef QTUDEV_H
+#define QTUDEV_H
 
 #include <QtCore/QString>
 
-#include <QtUDev/qtudevglobal.h>
+#include <Qt5Udev/qtudevglobal.h>
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class UdevDevice;
 class UdevPrivate;
 
-class LIRIUDEV_EXPORT Udev
+class QTUDEV_EXPORT Udev
 {
     Q_DECLARE_PRIVATE(Udev)
 public:
@@ -52,8 +50,6 @@ private:
     UdevPrivate *const d_ptr;
 };
 
-} // namespace Platform
+} // namespace QtUdev
 
-} // namespace Liri
-
-#endif // LIRI_UDEV_H
+#endif // QTUDEV_H

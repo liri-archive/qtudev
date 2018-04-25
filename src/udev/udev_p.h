@@ -21,14 +21,14 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef LIRI_UDEV_P_H
-#define LIRI_UDEV_P_H
+#ifndef QTUDEV_P_H
+#define QTUDEV_P_H
 
 //
 //  W A R N I N G
 //  -------------
 //
-// This file is not part of the Liri.  It exists purely as an
+// This file is not part of the QtUdev.  It exists purely as an
 // implementation detail.  This header file may change from version to
 // version without notice, or even be removed.
 //
@@ -37,7 +37,7 @@
 
 #include <QLoggingCategory>
 
-#include <QtUDev/qtudevglobal.h>
+#include <Qt5Udev/qtudevglobal.h>
 
 extern "C" {
 #include <libudev.h>
@@ -45,13 +45,11 @@ extern "C" {
 
 Q_DECLARE_LOGGING_CATEGORY(lcUdev)
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class Udev;
 
-class LIRIUDEV_EXPORT UdevPrivate
+class QTUDEV_EXPORT UdevPrivate
 {
 public:
     UdevPrivate();
@@ -62,9 +60,7 @@ public:
     struct udev *udev;
 };
 
-} // namespace Platform
+} // namespace QtUdev
 
-} // namespace Liri
-
-#endif // LIRI_UDEV_P_H
+#endif // QTUDEV_P_H
 

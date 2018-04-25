@@ -21,14 +21,14 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef UDEVMONITOR_P_H
-#define UDEVMONITOR_P_H
+#ifndef QTUDEVMONITOR_P_H
+#define QTUDEVMONITOR_P_H
 
 //
 //  W A R N I N G
 //  -------------
 //
-// This file is not part of the Liri.  It exists purely as an
+// This file is not part of the QtUdev.  It exists purely as an
 // implementation detail.  This header file may change from version to
 // version without notice, or even be removed.
 //
@@ -37,9 +37,7 @@
 
 #include "udevmonitor.h"
 
-namespace Liri {
-
-namespace Platform {
+namespace QtUdev {
 
 class UdevMonitorPrivate
 {
@@ -57,8 +55,6 @@ protected:
     UdevMonitor *q_ptr;
 };
 
-} // namespace Platform
+} // namespace QtUdev
 
-} // namespace Liri
-
-#endif // UDEVMONITOR_P_H
+#endif // QTUDEVMONITOR_P_H
