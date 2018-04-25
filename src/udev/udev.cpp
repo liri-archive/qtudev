@@ -95,7 +95,9 @@ UdevDevice *Udev::deviceFromFileName(const QString &fileName) const
     if (!dev)
         return nullptr;
 
-    return new UdevDevice(dev);
+    UdevDevice *device = new UdevDevice;
+    device->initialize(dev);
+    return device;
 }
 
 UdevDevice *Udev::deviceFromSubSystemAndName(const QString &subSystem, const QString &name) const
@@ -108,7 +110,9 @@ UdevDevice *Udev::deviceFromSubSystemAndName(const QString &subSystem, const QSt
     udev_device *dev = udev_device_new_from_subsystem_sysname(d->udev,
                                                               qPrintable(subSystem),
                                                               qPrintable(name));
-    return new UdevDevice(dev);
+    UdevDevice *device = new UdevDevice;
+    device->initialize(dev);
+    return device;
 }
 
 UdevDevice *Udev::deviceFromSysfsPath(const QString &sysfsPath) const
@@ -119,7 +123,9 @@ UdevDevice *Udev::deviceFromSysfsPath(const QString &sysfsPath) const
         return nullptr;
 
     udev_device *dev = udev_device_new_from_syspath(d->udev, qPrintable(sysfsPath));
-    return new UdevDevice(dev);
+    UdevDevice *device = new UdevDevice;
+    device->initialize(dev);
+    return device;
 }
 
 } // namespace QtUdev

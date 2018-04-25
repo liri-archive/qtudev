@@ -84,6 +84,7 @@ UdevEnumeratePrivate::~UdevEnumeratePrivate()
 UdevEnumerate::UdevEnumerate(UdevDevice::DeviceTypes types, Udev *udev)
     : d_ptr(new UdevEnumeratePrivate(types, udev))
 {
+    qRegisterMetaType<UdevDevice>();
 }
 
 UdevEnumerate::~UdevEnumerate()
@@ -126,8 +127,11 @@ QList<UdevDevice *> UdevEnumerate::scan() const
 
         QString node = QString::fromUtf8(udev_device_get_devnode(dev));
 
-        if (d->types.testFlag(UdevDevice::InputDevice_Mask) && node.startsWith(QLatin1String("/dev/input/event")))
-            list.append(new UdevDevice(dev));
+        if (d->types.testFlag(UdevDevice::InputDevice_Mask) && node.startsWith(QLatin1String("/dev/input/event"))) {
+            UdevDevice *device = new UdevDevice;
+            device->initialize(dev);
+            list.append(device);
+        }
 
         if (d->types.testFlag(UdevDevice::VideoDevice_Mask) && node.startsWith(QLatin1String("/dev/dri/card"))) {
             // We can have more than one DRM device on our seat, so the filter
@@ -150,10 +154,15 @@ QList<UdevDevice *> UdevEnumerate::scan() const
     }
 
     // Add any DRM device previously enumerated
-    if (drmPrimaryDevice)
-        list.append(new UdevDevice(drmPrimaryDevice));
-    else if (drmDevice)
-        list.append(new UdevDevice(drmDevice));
+    if (drmPrimaryDevice) {
+        UdevDevice *device = new UdevDevice;
+        device->initialize(drmPrimaryDevice);
+        list.append(device);
+    } else if (drmDevice) {
+        UdevDevice *device = new UdevDevice;
+        device->initialize(drmDevice);
+        list.append(device);
+    }
 
     return list;
 }

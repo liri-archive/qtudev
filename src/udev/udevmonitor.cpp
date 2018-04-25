@@ -69,7 +69,8 @@ void UdevMonitorPrivate::_q_udevEventHandler()
         return;
     }
 
-    UdevDevice *device = new UdevDevice(dev);
+    UdevDevice device;
+    device.initialize(dev);
 
     if (strcmp(action, "add") == 0)
         Q_EMIT q->deviceAdded(device);
@@ -91,6 +92,8 @@ UdevMonitor::UdevMonitor(Udev *udev, QObject *parent)
     : QObject(parent)
     , d_ptr(new UdevMonitorPrivate(this, udev))
 {
+    qRegisterMetaType<UdevDevice>();
+
     Q_D(UdevMonitor);
     int fd = udev_monitor_get_fd(d->monitor);
     QSocketNotifier *notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);

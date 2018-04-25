@@ -56,7 +56,10 @@ public:
     };
     Q_DECLARE_FLAGS(DeviceTypes, DeviceType)
 
+    explicit UdevDevice();
     ~UdevDevice();
+
+    bool isValid() const;
 
     DeviceTypes type() const;
 
@@ -80,7 +83,7 @@ public:
     UdevDevice *parent() const;
 
 private:
-    UdevDevice(udev_device *dev);
+    void initialize(udev_device *dev);
 
     UdevDevicePrivate *const d_ptr;
 
@@ -94,5 +97,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(UdevDevice::DeviceTypes)
 QDebug operator<<(QDebug, const UdevDevice &);
 
 } // namespace QtUdev
+
+Q_DECLARE_METATYPE(QtUdev::UdevDevice)
 
 #endif // QTUDEVDEVICE_H

@@ -46,7 +46,6 @@ static inline QStringList listFromEntries(udev_list_entry *l)
  */
 
 UdevDevicePrivate::UdevDevicePrivate()
-    : device(nullptr)
 {
 }
 
@@ -60,11 +59,9 @@ UdevDevicePrivate::~UdevDevicePrivate()
  * UdevDevice
  */
 
-UdevDevice::UdevDevice(udev_device *device)
+UdevDevice::UdevDevice()
     : d_ptr(new UdevDevicePrivate)
 {
-    Q_D(UdevDevice);
-    d->device = device;
 }
 
 UdevDevice::~UdevDevice()
@@ -72,11 +69,20 @@ UdevDevice::~UdevDevice()
     delete d_ptr;
 }
 
+bool UdevDevice::isValid() const
+{
+    Q_D(const UdevDevice);
+    return d->device != nullptr;
+}
+
 UdevDevice::DeviceTypes UdevDevice::type() const
 {
     Q_D(const UdevDevice);
 
     DeviceTypes result = 0;
+
+    if (!d->device)
+        return result;
 
     if (qstrcmp(udev_device_get_property_value(d->device, "ID_INPUT_KEYBOARD"), "1") == 0)
         result |= KeyboardDevice;
@@ -120,72 +126,96 @@ UdevDevice::DeviceTypes UdevDevice::type() const
 QString UdevDevice::subsystem() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QString();
     return QString::fromUtf8(udev_device_get_subsystem(d->device));
 }
 
 QString UdevDevice::devType() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QString();
     return QString::fromUtf8(udev_device_get_devtype(d->device));
 }
 
 QString UdevDevice::name() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QString();
     return QString::fromUtf8(udev_device_get_sysname(d->device));
 }
 
 QString UdevDevice::driver() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QString();
     return QString::fromUtf8(udev_device_get_driver(d->device));
 }
 
 QString UdevDevice::deviceNode() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QString();
     return QString::fromUtf8(udev_device_get_devnode(d->device));
 }
 
 QStringList UdevDevice::alternateDeviceSymlinks() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QStringList();
     return listFromEntries(udev_device_get_devlinks_list_entry(d->device));
 }
 
 QString UdevDevice::sysfsPath() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QString();
     return QString::fromUtf8(udev_device_get_syspath(d->device));
 }
 
 int UdevDevice::sysfsNumber() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return -1;
     return QByteArray(udev_device_get_sysnum(d->device)).toInt();
 }
 
 QString UdevDevice::property(const QString &name) const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QString();
     return QString::fromLatin1(udev_device_get_property_value(d->device, name.toLatin1().constData()));
 }
 
 bool UdevDevice::hasProperty(const QString &name) const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return false;
     return udev_device_get_property_value(d->device, name.toLatin1().constData()) != nullptr;
 }
 
 QStringList UdevDevice::deviceProperties() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QStringList();
     return listFromEntries(udev_device_get_properties_list_entry(d->device));
 }
 
 QStringList UdevDevice::sysfsProperties() const
 {
     Q_D(const UdevDevice);
+    if (!d->device)
+        return QStringList();
     return listFromEntries(udev_device_get_sysattr_list_entry(d->device));
 }
 
@@ -193,16 +223,31 @@ UdevDevice *UdevDevice::parent() const
 {
     Q_D(const UdevDevice);
 
+    if (!d->device)
+        return nullptr;
+
     udev_device *p = udev_device_get_parent(d->device);
-    if (p)
-        return new UdevDevice(p);
+    if (p) {
+        UdevDevice *parentDevice = new UdevDevice;
+        parentDevice->d_ptr->device = p;
+        return parentDevice;
+    }
     return nullptr;
+}
+
+void UdevDevice::initialize(udev_device *dev)
+{
+    Q_D(UdevDevice);
+    d->device = dev;
 }
 
 QDebug operator<<(QDebug dbg, const UdevDevice &device)
 {
     QDebugStateSaver saver(dbg);
-    dbg.nospace() << "UdevDevice(" << device.deviceNode() << ')';
+    if (device.isValid())
+        dbg.nospace() << "UdevDevice(" << device.deviceNode() << ')';
+    else
+        dbg.nospace() << "Invalid UdevDevice)";
     return dbg;
 }
 
