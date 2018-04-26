@@ -1,4 +1,4 @@
-Qt UDev
+Qt Udev
 =======
 
 [![ZenHub.io](https://img.shields.io/badge/supercharged%20by-zenhub.io-blue.svg)](https://zenhub.io)
