@@ -35,7 +35,7 @@ LiriModuleProject {
     LiriModule {
         name: root.moduleName
         targetName: root.targetName
-        version: "0.0.0"
+        version: "1.0.0"
 
         Depends { name: root.headersName }
         Depends {
