@@ -3,6 +3,7 @@ import qbs 1.0
 QtApplication {
     name: "tst_qtudev"
     type: base.concat(["autotest"])
+    condition: project.autotestEnabled
 
     Depends { name: "lirideployment" }
     Depends {
