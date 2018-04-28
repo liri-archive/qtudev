@@ -56,6 +56,8 @@ private Q_SLOTS:
         if (error)
             QFAIL(error->message);
         umockdev_testbed_enable(m_bed);
+
+        QVERIFY(umockdev_in_mock_environment());
     }
 
     void cleanupTestCase()
