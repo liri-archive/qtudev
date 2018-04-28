@@ -4,6 +4,13 @@ set -e
 
 source /usr/local/share/liri-travis/functions
 
+# Install dependencies
+travis_start "install_packages"
+msg "Install packages..."
+sudo apt-get install -y \
+     libumockdev-dev
+travis_end "install_packages"
+
 # Install artifacts
 travis_start "artifacts"
 msg "Install artifacts..."

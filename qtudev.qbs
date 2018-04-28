@@ -18,9 +18,11 @@ Project {
 
     minimumQbsVersion: "1.9.0"
 
+    qbsSearchPaths: ["qbs"]
+
     references: [
         "src/deployment.qbs",
         "src/udev/udev.qbs",
-        //"tests/auto/auto.qbs",
+        "tests/auto/auto.qbs",
     ]
 }
