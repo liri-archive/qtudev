@@ -13,7 +13,7 @@ Qt-style API to use udev.
 
 Qt >= 5.8.0 with at least the following modules is required:
 
-* [qtbase](http://code.qt.io/cgit/qt/qtbase.git)
+ * [qtbase](http://code.qt.io/cgit/qt/qtbase.git)
 
 And the following modules:
 
@@ -22,7 +22,11 @@ And the following modules:
 
 The following modules and their dependencies are required:
 
-* [udev](http://www.freedesktop.org/software/systemd/libudev/)
+ * [udev](http://www.freedesktop.org/software/systemd/libudev/)
+
+For autotests you need:
+
+ * [umockdev](https://github.com/martinpitt/umockdev/)
 
 ## Installation
 
