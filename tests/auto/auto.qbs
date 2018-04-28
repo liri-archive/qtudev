@@ -8,7 +8,7 @@ Project {
     ]
 
     AutotestRunner {
-        Depends { name: "Qt5UDev" }
+        Depends { name: "Qt5Udev" }
 
         builtByDefault: project.autotestEnabled
         name: "qtudev-autotest"

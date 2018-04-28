@@ -1,15 +1,19 @@
 import qbs 1.0
 
 QtApplication {
-    name: "tst_wl_udev"
+    name: "tst_qtudev"
     type: base.concat(["autotest"])
 
+    Depends { name: "lirideployment" }
     Depends {
         name: "Qt"
         submodules: ["gui", "testlib"]
         versionAtLeast: project.minimumQtVersion
     }
-    Depends { name: "LiriUDev" }
+    Depends { name: "Qt5Udev" }
+    Depends { name: "umockdev" }
+
+    Qt.core.enableKeywords: false
 
     files: ["*.cpp"]
 }

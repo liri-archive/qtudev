@@ -1,10 +1,7 @@
 /****************************************************************************
  * This file is part of Liri.
  *
- * Copyright (C) 2015-2016 Pier Luigi Fiorini
- *
- * Author(s):
- *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  *
  * $BEGIN_LICENSE:GPL3+$
  *
@@ -26,21 +23,47 @@
 
 #include <QtTest/QtTest>
 
-#include <LiriUDev/Udev>
-#include <LiriUDev/UdevEnumerate>
+#include <Qt5Udev/Udev>
+#include <Qt5Udev/UdevEnumerate>
 
-using namespace Liri::Platform;
+#include <umockdev.h>
+
+using namespace QtUdev;
 
 class TestUdev : public QObject
 {
     Q_OBJECT
 public:
-    TestUdev(QObject *parent = 0)
+    TestUdev(QObject *parent = nullptr)
         : QObject(parent)
     {
     }
 
+private:
+    UMockdevTestbed *m_bed = nullptr;
+
 private Q_SLOTS:
+    void initTestCase()
+    {
+        m_bed = umockdev_testbed_new();
+        QVERIFY(m_bed != nullptr);
+        QString path = QFINDTESTDATA("test.umockdev");
+        QVERIFY(!path.isEmpty());
+        qInfo() << "Using:" << path;
+
+        g_autoptr(GError) error = nullptr;
+        umockdev_testbed_add_from_file(m_bed, path.toLatin1().constData(), &error);
+        if (error)
+            QFAIL(error->message);
+        umockdev_testbed_enable(m_bed);
+    }
+
+    void cleanupTestCase()
+    {
+        if (m_bed)
+            g_object_unref(m_bed);
+    }
+
     void testConnection()
     {
         Udev *udev = new Udev;
@@ -54,8 +77,12 @@ private Q_SLOTS:
         QVERIFY(udev->isValid());
 
         UdevDevice *dev = udev->deviceFromFileName(QStringLiteral("/dev/sda"));
-        QCOMPARE(dev->deviceNode(), QStringLiteral("/dev/sda"));
         QVERIFY(dev);
+        QCOMPARE(dev->deviceNode(), QStringLiteral("/dev/sda"));
+        QCOMPARE(dev->name(), QStringLiteral("sda"));
+        QVERIFY(dev->hasProperty(QStringLiteral("ID_SERIAL")));
+        QCOMPARE(dev->property(QStringLiteral("ID_SERIAL")), QStringLiteral("TOSHIBA_MQ01ABD100_Y49DSZAOS"));
+        QCOMPARE(dev->property(QStringLiteral("ID_MODEL")), QStringLiteral("TOSHIBA_MQ01ABD100"));
 
         delete dev;
         delete udev;
