@@ -34,5 +34,6 @@ qbs -d build -j $(nproc) --all-products profile:travis-qt5 \
     modules.lirideployment.prefix:/usr \
     modules.lirideployment.libDir:/usr/lib/x86_64-linux-gnu \
     modules.lirideployment.qmlDir:/usr/lib/x86_64-linux-gnu/qt5/qml \
-    modules.lirideployment.pluginsDir:/usr/lib/x86_64-linux-gnu/qt5/plugins
+    modules.lirideployment.pluginsDir:/usr/lib/x86_64-linux-gnu/qt5/plugins \
+    project.autotestEnabled:false
 travis_end "build"
