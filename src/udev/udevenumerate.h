@@ -30,7 +30,7 @@ namespace QtUdev {
 
 class UdevEnumeratePrivate;
 
-class QTUDEV_EXPORT UdevEnumerate
+class QT5UDEV_EXPORT UdevEnumerate
 {
     Q_DECLARE_PRIVATE(UdevEnumerate)
 public:

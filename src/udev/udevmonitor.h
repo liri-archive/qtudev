@@ -26,7 +26,7 @@
 
 #include <QtCore/QObject>
 
-#include <Qt5Udev/qtudevglobal.h>
+#include <Qt5Udev/qt5udevglobal.h>
 
 namespace QtUdev {
 
@@ -34,7 +34,7 @@ class Udev;
 class UdevDevice;
 class UdevMonitorPrivate;
 
-class QTUDEV_EXPORT UdevMonitor : public QObject
+class QT5UDEV_EXPORT UdevMonitor : public QObject
 {
     Q_OBJECT
     Q_DECLARE_PRIVATE(UdevMonitor)

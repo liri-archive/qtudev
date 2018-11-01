@@ -37,7 +37,7 @@
 
 #include <QLoggingCategory>
 
-#include <Qt5Udev/qtudevglobal.h>
+#include <Qt5Udev/qt5udevglobal.h>
 
 extern "C" {
 #include <libudev.h>
@@ -49,7 +49,7 @@ namespace QtUdev {
 
 class Udev;
 
-class QTUDEV_EXPORT UdevPrivate
+class QT5UDEV_EXPORT UdevPrivate
 {
 public:
     UdevPrivate();
