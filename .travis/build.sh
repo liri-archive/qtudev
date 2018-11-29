@@ -53,5 +53,6 @@ travis_end "install"
 # Package
 travis_start "package"
 msg "Package..."
-make package
+mkdir -p artifacts
+tar czf artifacts/qtudev-artifacts.tar.gz -T install_manifest.txt
 travis_end "package"
