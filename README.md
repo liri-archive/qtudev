@@ -32,6 +32,7 @@ For autotests you need:
 
 ```sh
 mkdir build
+cd build
 cmake -DCMAKE_INSTALL_PREFIX=/path/to/prefix ..
 make
 make install # use sudo if necessary
