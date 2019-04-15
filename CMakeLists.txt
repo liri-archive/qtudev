@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10.0)
 
 project("QtUdev"
-    VERSION "1.0.0"
+    VERSION "1.1.0"
     DESCRIPTION "Qt style API to use udev"
     LANGUAGES CXX C
 )
