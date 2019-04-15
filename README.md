@@ -5,7 +5,6 @@ Qt Udev
 [![GitHub release](https://img.shields.io/github/release/lirios/qtudev.svg)](https://github.com/lirios/qtudev)
 [![Build Status](https://travis-ci.org/lirios/qtudev.svg?branch=develop)](https://travis-ci.org/lirios/qtudev)
 [![GitHub issues](https://img.shields.io/github/issues/lirios/qtudev.svg)](https://github.com/lirios/qtudev/issues)
-[![Maintained](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/lirios/qtudev/commits/develop)
 
 Qt-style API to use udev.
 
