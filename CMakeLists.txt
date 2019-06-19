@@ -30,7 +30,7 @@ find_package(Qt5 "${QT_MIN_VERSION}"
 
 ## Add subdirectories:
 add_subdirectory(src/udev)
-if(BUILD_TESTING)
+if(LIRI_BUILD_TESTING)
     if(TARGET Qt5Udev)
         add_subdirectory(tests/auto/udev)
     endif()
