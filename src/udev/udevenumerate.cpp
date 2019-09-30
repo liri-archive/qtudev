@@ -21,6 +21,7 @@
  * $END_LICENSE$
  ***************************************************************************/
 
+#include "logindseat_p.h"
 #include "udev.h"
 #include "udev_p.h"
 #include "udevenumerate.h"
@@ -33,7 +34,8 @@ namespace QtUdev {
  */
 
 UdevEnumeratePrivate::UdevEnumeratePrivate(UdevDevice::DeviceTypes t, Udev *u)
-    : types(t)
+    : logindSeat(new LogindSeat)
+    , types(t)
     , udev(u)
 {
     enumerate = udev_enumerate_new(UdevPrivate::get(u)->udev);
@@ -75,6 +77,8 @@ UdevEnumeratePrivate::~UdevEnumeratePrivate()
 {
     if (enumerate)
         udev_enumerate_unref(enumerate);
+
+    delete logindSeat;
 }
 
 /*
@@ -117,10 +121,10 @@ QList<UdevDevice *> UdevEnumerate::scan() const
             continue;
 
         // Must be on the same seat
-        QByteArray seat = QByteArray(udev_device_get_property_value(dev, "ID_SEAT"));
+        QString seat = QString::fromUtf8(udev_device_get_property_value(dev, "ID_SEAT"));
         if (seat.isEmpty())
-            seat = QByteArrayLiteral("seat0");
-        if (seat != qgetenv("XDG_SEAT")) {
+            seat = QStringLiteral("seat0");
+        if (seat != d->logindSeat->id()) {
             udev_device_unref(dev);
             continue;
         }

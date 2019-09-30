@@ -8,6 +8,8 @@ liri_add_module(Qt5Udev
     VERSIONED_MODULE_NAME
         Qt5Udev
     SOURCES
+        logindseat.cpp
+        logindseat_p.h
         udev.cpp
         udevdevice.cpp
         udevdevice.h
@@ -36,6 +38,7 @@ liri_add_module(Qt5Udev
     PUBLIC_LIBRARIES
         Qt5::Core
     LIBRARIES
+        Qt5::DBus
         PkgConfig::Libudev
     PKGCONFIG_DEPENDENCIES
         Qt5Core

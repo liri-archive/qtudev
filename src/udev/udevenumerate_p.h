@@ -41,6 +41,8 @@ extern "C" {
 #include <libudev.h>
 }
 
+class LogindSeat;
+
 namespace QtUdev {
 
 class UdevEnumeratePrivate
@@ -49,6 +51,7 @@ public:
     UdevEnumeratePrivate(UdevDevice::DeviceTypes t, Udev *u);
     ~UdevEnumeratePrivate();
 
+    LogindSeat *logindSeat = nullptr;
     UdevDevice::DeviceTypes types;
     Udev *udev;
     udev_enumerate *enumerate;
