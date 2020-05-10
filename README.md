@@ -3,8 +3,8 @@ Qt Udev
 
 [![License](https://img.shields.io/badge/license-LGPLv3.0-blue.svg)](http://www.gnu.org/licenses/lgpl.txt)
 [![GitHub release](https://img.shields.io/github/release/lirios/qtudev.svg)](https://github.com/lirios/qtudev)
-[![CI](https://github.com/lirios/qtudev/workflows/CI/badge.svg?branch=develop)](https://github.com/lirios/qtudev/actions?query=workflow%3ACI)
 [![GitHub issues](https://img.shields.io/github/issues/lirios/qtudev.svg)](https://github.com/lirios/qtudev/issues)
+[![CI](https://github.com/lirios/qtudev/workflows/CI/badge.svg?branch=develop)](https://github.com/lirios/qtudev/actions?query=workflow%3ACI)
 
 Qt-style API to use udev.
 
