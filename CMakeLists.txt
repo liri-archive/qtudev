@@ -29,6 +29,9 @@ find_package(Qt5 "${QT_MIN_VERSION}"
         DBus
 )
 
+## Treat warnings as errors:
+add_compile_options(-Wall -Wextra -Werror)
+
 ## Add subdirectories:
 add_subdirectory(src/udev)
 if(BUILD_TESTING)

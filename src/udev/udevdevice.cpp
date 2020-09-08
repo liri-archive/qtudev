@@ -79,7 +79,7 @@ UdevDevice::DeviceTypes UdevDevice::type() const
 {
     Q_D(const UdevDevice);
 
-    DeviceTypes result = 0;
+    DeviceTypes result;
 
     if (!d->device)
         return result;
