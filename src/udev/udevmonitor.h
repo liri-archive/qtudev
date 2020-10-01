@@ -48,11 +48,11 @@ public:
     void filterTag(const QString &tag);
 
 Q_SIGNALS:
-    void deviceAdded(const UdevDevice &device);
-    void deviceRemoved(const UdevDevice &device);
-    void deviceChanged(const UdevDevice &device);
-    void deviceOnlined(const UdevDevice &device);
-    void deviceOfflined(const UdevDevice &device);
+    void deviceAdded(const QtUdev::UdevDevice &device);
+    void deviceRemoved(const QtUdev::UdevDevice &device);
+    void deviceChanged(const QtUdev::UdevDevice &device);
+    void deviceOnlined(const QtUdev::UdevDevice &device);
+    void deviceOfflined(const QtUdev::UdevDevice &device);
 
 private:
     UdevMonitorPrivate *const d_ptr;
