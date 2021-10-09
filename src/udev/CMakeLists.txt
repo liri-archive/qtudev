@@ -22,16 +22,6 @@ liri_add_module(Qt5Udev
         udevmonitor.h
         udevmonitor_p.h
         udev_p.h
-    FORWARDING_HEADERS
-        Udev
-        UdevDevice
-        UdevEnumerate
-        UdevMonitor
-    PRIVATE_HEADERS
-        udevdevice_p.h
-        udevenumerate_p.h
-        udevmonitor_p.h
-        udev_p.h
     DEFINES
         QT_NO_CAST_FROM_ASCII
         QT_NO_FOREACH
@@ -44,3 +34,5 @@ liri_add_module(Qt5Udev
         Qt5Core
         libudev
 )
+
+liri_finalize_module(Qt5Udev)
