@@ -47,7 +47,7 @@ jobs:
       - name: Build dependencies
         run: |
           set -x
-          zypper --non-interactive install extra-cmake-modules sudo
+          zypper --non-interactive install extra-cmake-modules sudo umockdev-devel
           ./.github/workflows/scripts/build-deps ${{ steps.extract_branch.outputs.branch }}
       - name: Build
         run: |
